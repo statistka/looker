@@ -5,6 +5,7 @@ view: f_lineitems {
     ;;
 
   measure: l_availqty {
+    label: "Available Qty"
     type: number
     sql: ${TABLE}."L_AVAILQTY" ;;
   }
