@@ -4,7 +4,7 @@ view: f_lineitems {
   sql_table_name: "DATA_MART"."F_LINEITEMS"
     ;;
 
-  dimension: l_availqty {
+  measure: l_availqty {
     type: number
     sql: ${TABLE}."L_AVAILQTY" ;;
   }
@@ -17,11 +17,13 @@ view: f_lineitems {
   dimension: l_commitdatekey {
     type: number
     sql: ${TABLE}."L_COMMITDATEKEY" ;;
+    hidden: yes
   }
 
   dimension: l_custkey {
     type: number
     sql: ${TABLE}."L_CUSTKEY" ;;
+    hidden: yes
   }
 
   dimension: l_discount {
@@ -42,11 +44,13 @@ view: f_lineitems {
   dimension: l_orderdatekey {
     type: number
     sql: ${TABLE}."L_ORDERDATEKEY" ;;
+    hidden: yes
   }
 
   dimension: l_orderkey {
     type: number
     sql: ${TABLE}."L_ORDERKEY" ;;
+    hidden: yes
   }
 
   dimension: l_orderpriority {
@@ -62,9 +66,10 @@ view: f_lineitems {
   dimension: l_partkey {
     type: number
     sql: ${TABLE}."L_PARTKEY" ;;
+    hidden: yes
   }
 
-  dimension: l_quantity {
+  measure: l_quantity {
     type: number
     sql: ${TABLE}."L_QUANTITY" ;;
   }
@@ -72,6 +77,7 @@ view: f_lineitems {
   dimension: l_receiptdatekey {
     type: number
     sql: ${TABLE}."L_RECEIPTDATEKEY" ;;
+    hidden: yes
   }
 
   dimension: l_returnflag {
@@ -82,6 +88,7 @@ view: f_lineitems {
   dimension: l_shipdatekey {
     type: number
     sql: ${TABLE}."L_SHIPDATEKEY" ;;
+    hidden: yes
   }
 
   dimension: l_shipinstruct {
@@ -104,46 +111,40 @@ view: f_lineitems {
     sql: ${TABLE}."L_SUPPKEY" ;;
   }
 
-  dimension: l_supplycost {
+  measure: l_supplycost {
     type: number
     sql: ${TABLE}."L_SUPPLYCOST" ;;
   }
 
-  dimension: l_tax {
+  measure: l_tax {
     type: number
     sql: ${TABLE}."L_TAX" ;;
   }
 
-  dimension: l_totalprice {
+  measure: l_totalprice {
     type: number
     sql: ${TABLE}."L_TOTALPRICE" ;;
   }
 
   measure: count {
-    hidden: yes
     type: count
     drill_fields: []
+    hidden: yes
   }
 
-  measure: TTL_SLS_PRC {
-    label: "Total Sale Price"
-    description: "Total sales from items sold"
+  measure: TtlSalePrice {
     type: sum
     sql: ${l_extendedprice} ;;
     value_format_name: usd
   }
 
-  measure: AVG_SLS_PRC {
-    label: "Average Sale Price"
-    description: "Average sale price from items sold"
+  measure: AvgSalePrice {
     type: average
-    sql: ${l_extendedprice} ;;
+    sql: ${l_extendedprice};;
     value_format_name: usd
   }
 
-  measure: CML_TTL_SLS {
-    label: "Cumulative Total Sales"
-    description: "Cumulative total sales from items sold (also known as a running total)"
+  measure: CmlTtlSale {
     type: running_total
     sql: ${l_extendedprice} ;;
     value_format_name: usd
