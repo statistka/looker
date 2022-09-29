@@ -1,4 +1,6 @@
 view: d_dates {
+  label: "Dates"
+  view_label: "DimDate"
   sql_table_name: "DATA_MART"."D_DATES"
     ;;
 
@@ -20,6 +22,7 @@ view: d_dates {
   dimension: datekey {
     type: number
     sql: ${TABLE}."DATEKEY" ;;
+    primary_key: yes
   }
 
   dimension: day_of_week {

@@ -1,4 +1,6 @@
 view: d_customer {
+  label: "Customers"
+  view_label: "DimCustomer"
   sql_table_name: "DATA_MART"."D_CUSTOMER"
     ;;
 
@@ -10,6 +12,7 @@ view: d_customer {
   dimension: c_custkey {
     type: number
     sql: ${TABLE}."C_CUSTKEY" ;;
+    primary_key: yes
   }
 
   dimension: c_mktsegment {

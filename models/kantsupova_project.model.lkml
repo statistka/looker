@@ -11,7 +11,7 @@ datagroup: kantsupova_project_default_datagroup {
 persist_with: kantsupova_project_default_datagroup
 
 explore: f_lineitems {
-  label: "Items Analysis"
+  label: "Items"
   view_label: "OrderedItems"
   join: d_part{
     type: left_outer

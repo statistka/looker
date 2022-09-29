@@ -1,4 +1,6 @@
 view: f_lineitems {
+  label: "Ordered Items"
+  view_label: "FactItems"
   sql_table_name: "DATA_MART"."F_LINEITEMS"
     ;;
 

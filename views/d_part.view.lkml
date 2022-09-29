@@ -1,4 +1,6 @@
 view: d_part {
+  label: "Parts"
+  view_label: "DimPart"
   sql_table_name: "DATA_MART"."D_PART"
     ;;
 
@@ -20,6 +22,7 @@ view: d_part {
   dimension: p_partkey {
     type: number
     sql: ${TABLE}."P_PARTKEY" ;;
+    primary_key: yes
   }
 
   dimension: p_size {

@@ -1,4 +1,6 @@
 view: d_supplier {
+  label: "Suppliers"
+  view_label: "DimSupplier"
   sql_table_name: "DATA_MART"."D_SUPPLIER"
     ;;
 
@@ -35,6 +37,7 @@ view: d_supplier {
   dimension: s_suppkey {
     type: number
     sql: ${TABLE}."S_SUPPKEY" ;;
+    primary_key: yes
   }
 
   measure: count {
