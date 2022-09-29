@@ -34,9 +34,8 @@ view: f_lineitems {
     sql: ${TABLE}."L_DISCOUNT" ;;
   }
 
-  dimension: sales {
+  dimension: l_extendedprice {
     label: "Sales"
-    alias: [l_extendedprice]
     type: number
     sql: ${TABLE}."L_EXTENDEDPRICE" ;;
   }
@@ -152,7 +151,7 @@ view: f_lineitems {
     label: "Total Sale Price"
     description: "Total sales from items sold"
     type: sum
-    sql: ${sales} ;;
+    sql: ${l_extendedprice} ;;
     value_format_name: usd
   }
 
@@ -160,7 +159,7 @@ view: f_lineitems {
     label: "Average Sale Price"
     description: "Average sale price of items sold"
     type: average
-    sql: ${sales};;
+    sql: ${l_extendedprice};;
     value_format_name: usd
   }
 
