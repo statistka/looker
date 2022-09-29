@@ -131,7 +131,7 @@ view: f_lineitems {
   }
 
   measure: l_tax {
-    view_label: "Tax"
+    label: "Tax"
     type: number
     sql: ${TABLE}."L_TAX" ;;
   }
