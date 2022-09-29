@@ -5,12 +5,13 @@ view: f_lineitems {
     ;;
 
   measure: l_availqty {
-    label: "Available Qty"
+    view_label: "Available Qty"
     type: number
     sql: ${TABLE}."L_AVAILQTY" ;;
   }
 
   dimension: l_clerk {
+    view_label: "Clerk"
     type: string
     sql: ${TABLE}."L_CLERK" ;;
   }
@@ -28,11 +29,14 @@ view: f_lineitems {
   }
 
   dimension: l_discount {
+    view_label: "Discount"
     type: number
     sql: ${TABLE}."L_DISCOUNT" ;;
   }
 
-  dimension: l_extendedprice {
+  dimension: sales {
+    view_label: "Sales"
+    alias: [l_extendedprice]
     type: number
     sql: ${TABLE}."L_EXTENDEDPRICE" ;;
   }
@@ -40,6 +44,7 @@ view: f_lineitems {
   dimension: l_linenumber {
     type: number
     sql: ${TABLE}."L_LINENUMBER" ;;
+    hidden: yes
   }
 
   dimension: l_orderdatekey {
@@ -55,11 +60,13 @@ view: f_lineitems {
   }
 
   dimension: l_orderpriority {
+    view_label: "Order Priority"
     type: string
     sql: ${TABLE}."L_ORDERPRIORITY" ;;
   }
 
   dimension: l_orderstatus {
+    view_label: "Order Status"
     type: string
     sql: ${TABLE}."L_ORDERSTATUS" ;;
   }
@@ -71,6 +78,7 @@ view: f_lineitems {
   }
 
   measure: l_quantity {
+    view_label: "Quantity"
     type: number
     sql: ${TABLE}."L_QUANTITY" ;;
   }
@@ -82,6 +90,7 @@ view: f_lineitems {
   }
 
   dimension: l_returnflag {
+    view_label: "Return flag"
     type: string
     sql: ${TABLE}."L_RETURNFLAG" ;;
   }
@@ -98,11 +107,13 @@ view: f_lineitems {
   }
 
   dimension: l_shipmode {
+    view_label: "Shipping Mode"
     type: string
     sql: ${TABLE}."L_SHIPMODE" ;;
   }
 
   dimension: l_shippriority {
+    view_label: "Shipping Priority"
     type: number
     sql: ${TABLE}."L_SHIPPRIORITY" ;;
   }
@@ -110,19 +121,23 @@ view: f_lineitems {
   dimension: l_suppkey {
     type: number
     sql: ${TABLE}."L_SUPPKEY" ;;
+    hidden: yes
   }
 
   measure: l_supplycost {
+    view_label: "Supply Cost"
     type: number
     sql: ${TABLE}."L_SUPPLYCOST" ;;
   }
 
   measure: l_tax {
+    view_label: "Tax"
     type: number
     sql: ${TABLE}."L_TAX" ;;
   }
 
   measure: l_totalprice {
+    view_label: "Total Order Sum"
     type: number
     sql: ${TABLE}."L_TOTALPRICE" ;;
   }
@@ -135,13 +150,13 @@ view: f_lineitems {
 
   measure: TtlSalePrice {
     type: sum
-    sql: ${l_extendedprice} ;;
+    sql: ${sales} ;;
     value_format_name: usd
   }
 
   measure: AvgSalePrice {
     type: average
-    sql: ${l_extendedprice};;
+    sql: ${sales};;
     value_format_name: usd
   }
 
