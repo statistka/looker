@@ -23,6 +23,7 @@ view: d_part {
     type: number
     sql: ${TABLE}."P_PARTKEY" ;;
     primary_key: yes
+    hidden: yes
   }
 
   dimension: p_size {

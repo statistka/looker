@@ -120,6 +120,7 @@ view: f_lineitems {
   }
 
   measure: count {
+    hidden: yes
     type: count
     drill_fields: []
   }

@@ -38,6 +38,7 @@ view: d_supplier {
     type: number
     sql: ${TABLE}."S_SUPPKEY" ;;
     primary_key: yes
+    hidden: yes
   }
 
   measure: count {

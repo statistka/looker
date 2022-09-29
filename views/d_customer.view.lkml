@@ -13,6 +13,7 @@ view: d_customer {
     type: number
     sql: ${TABLE}."C_CUSTKEY" ;;
     primary_key: yes
+    hidden: yes
   }
 
   dimension: c_mktsegment {
