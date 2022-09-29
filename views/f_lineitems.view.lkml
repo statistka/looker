@@ -146,7 +146,7 @@ view: f_lineitems {
 
   measure: CmlTtlSale {
     type: running_total
-    sql: ${l_extendedprice} ;;
+    sql: ${TtlSalePrice} ;;
     value_format_name: usd
   }
 }
