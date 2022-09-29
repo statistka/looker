@@ -5,13 +5,13 @@ view: f_lineitems {
     ;;
 
   measure: l_availqty {
-    view_label: "Available Qty"
+    label: "Available Qty"
     type: number
     sql: ${TABLE}."L_AVAILQTY" ;;
   }
 
   dimension: l_clerk {
-    view_label: "Clerk"
+    label: "Clerk"
     type: string
     sql: ${TABLE}."L_CLERK" ;;
   }
@@ -29,13 +29,13 @@ view: f_lineitems {
   }
 
   dimension: l_discount {
-    view_label: "Discount"
+    label: "Discount"
     type: number
     sql: ${TABLE}."L_DISCOUNT" ;;
   }
 
   dimension: sales {
-    view_label: "Sales"
+    label: "Sales"
     alias: [l_extendedprice]
     type: number
     sql: ${TABLE}."L_EXTENDEDPRICE" ;;
@@ -60,13 +60,13 @@ view: f_lineitems {
   }
 
   dimension: l_orderpriority {
-    view_label: "Order Priority"
+    label: "Order Priority"
     type: string
     sql: ${TABLE}."L_ORDERPRIORITY" ;;
   }
 
   dimension: l_orderstatus {
-    view_label: "Order Status"
+    label: "Order Status"
     type: string
     sql: ${TABLE}."L_ORDERSTATUS" ;;
   }
@@ -78,7 +78,7 @@ view: f_lineitems {
   }
 
   measure: l_quantity {
-    view_label: "Quantity"
+    label: "Quantity"
     type: number
     sql: ${TABLE}."L_QUANTITY" ;;
   }
@@ -90,7 +90,7 @@ view: f_lineitems {
   }
 
   dimension: l_returnflag {
-    view_label: "Return flag"
+    label: "Return flag"
     type: string
     sql: ${TABLE}."L_RETURNFLAG" ;;
   }
@@ -107,13 +107,13 @@ view: f_lineitems {
   }
 
   dimension: l_shipmode {
-    view_label: "Shipping Mode"
+    label: "Shipping Mode"
     type: string
     sql: ${TABLE}."L_SHIPMODE" ;;
   }
 
   dimension: l_shippriority {
-    view_label: "Shipping Priority"
+    label: "Shipping Priority"
     type: number
     sql: ${TABLE}."L_SHIPPRIORITY" ;;
   }
@@ -125,7 +125,7 @@ view: f_lineitems {
   }
 
   measure: l_supplycost {
-    view_label: "Supply Cost"
+    label: "Supply Cost"
     type: number
     sql: ${TABLE}."L_SUPPLYCOST" ;;
   }
@@ -137,7 +137,7 @@ view: f_lineitems {
   }
 
   measure: l_totalprice {
-    view_label: "Total Order Sum"
+    label: "Total Order Sum"
     type: number
     sql: ${TABLE}."L_TOTALPRICE" ;;
   }
@@ -149,18 +149,24 @@ view: f_lineitems {
   }
 
   measure: TtlSalePrice {
+    label: "Total Sale Price"
+    description: "Total sales from items sold"
     type: sum
     sql: ${sales} ;;
     value_format_name: usd
   }
 
   measure: AvgSalePrice {
+    label: "Average Sale Price"
+    description: "Average sale price of items sold"
     type: average
     sql: ${sales};;
     value_format_name: usd
   }
 
   measure: CmlTtlSale {
+    label: "Cumulative Total Sales"
+    description: "Cumulative total sales from items sold (also known as a running total)"
     type: running_total
     sql: ${TtlSalePrice} ;;
     value_format_name: usd
