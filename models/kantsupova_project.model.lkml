@@ -12,7 +12,7 @@ persist_with: kantsupova_project_default_datagroup
 
 explore: f_lineitems {
   label: "Items"
-  view_label: "OrderedItems"
+  view_label: "Ordered Items"
 
   join: d_part{
     view_label: "Parts"
@@ -36,6 +36,6 @@ explore: f_lineitems {
     view_label: "Dates"
     type: left_outer
     sql_on: ${d_dates.datekey} = ${f_lineitems.l_orderdatekey} ;;
-    relationship: many_to_many
+    relationship: many_to_one
   }
 }

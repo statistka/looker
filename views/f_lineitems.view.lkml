@@ -4,7 +4,7 @@ view: f_lineitems {
   sql_table_name: "DATA_MART"."F_LINEITEMS"
     ;;
 
-  measure: l_availqty {
+  dimension: l_availqty {
     label: "Available Qty"
     type: number
     sql: ${TABLE}."L_AVAILQTY" ;;
@@ -76,7 +76,7 @@ view: f_lineitems {
     hidden: yes
   }
 
-  measure: l_quantity {
+  dimension: l_quantity {
     label: "Quantity"
     type: number
     sql: ${TABLE}."L_QUANTITY" ;;
@@ -123,19 +123,19 @@ view: f_lineitems {
     hidden: yes
   }
 
-  measure: l_supplycost {
+  dimension: l_supplycost {
     label: "Supply Cost"
     type: number
     sql: ${TABLE}."L_SUPPLYCOST" ;;
   }
 
-  measure: l_tax {
+  dimension: l_tax {
     label: "Tax"
     type: number
     sql: ${TABLE}."L_TAX" ;;
   }
 
-  measure: l_totalprice {
+  dimension: l_totalprice {
     label: "Total Order Sum"
     type: number
     sql: ${TABLE}."L_TOTALPRICE" ;;
@@ -146,7 +146,6 @@ view: f_lineitems {
     drill_fields: []
     hidden: yes
   }
-
   measure: TtlSalePrice {
     label: "Total Sale Price"
     description: "Total sales from items sold"
@@ -169,5 +168,5 @@ view: f_lineitems {
     type: running_total
     sql: ${TtlSalePrice} ;;
     value_format_name: usd
-  }
+    }
 }
