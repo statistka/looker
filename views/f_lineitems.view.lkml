@@ -19,7 +19,7 @@ view: f_lineitems {
   dimension: l_commitdatekey {
     type: number
     sql: ${TABLE}."L_COMMITDATEKEY" ;;
-    hidden: yes
+    hidden: no
   }
 
   dimension: l_custkey {
@@ -49,7 +49,7 @@ view: f_lineitems {
   dimension: l_orderdatekey {
     type: number
     sql: ${TABLE}."L_ORDERDATEKEY" ;;
-    hidden: yes
+    hidden: no
   }
 
   dimension: l_orderkey {
@@ -85,7 +85,7 @@ view: f_lineitems {
   dimension: l_receiptdatekey {
     type: number
     sql: ${TABLE}."L_RECEIPTDATEKEY" ;;
-    hidden: yes
+    hidden: no
   }
 
   dimension: l_returnflag {
@@ -97,7 +97,7 @@ view: f_lineitems {
   dimension: l_shipdatekey {
     type: number
     sql: ${TABLE}."L_SHIPDATEKEY" ;;
-    hidden: yes
+    hidden: no
   }
 
   dimension: l_shipinstruct {
