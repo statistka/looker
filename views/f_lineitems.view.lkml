@@ -235,5 +235,27 @@ view: f_lineitems {
     value_format_name: percent_2
   }
 
+  measure: ReturnedItems {
+    label: "Number of Items Returned"
+    description: "Number of items that were returned by dissatisfied customers"
+    type: sum
+    sql: ${l_quantity} ;;
+    filters: [l_orderstatus: "R"]
+  }
+
+  measure: SoldItems {
+    label: "Total Number of Items Sold"
+    description: "Number of items that were sold"
+    type: sum
+    sql: ${l_quantity} ;;
+  }
+
+  measure: ItemRR {
+    label: "Item Return Rate"
+    description: "Number Of Items Returned / Total Number Of Items Sold"
+    type: number
+    sql: ${ReturnedItems} / NULLIF(${SoldItems},0) ;;
+    value_format_name: percent_2
+  }
 
 }
