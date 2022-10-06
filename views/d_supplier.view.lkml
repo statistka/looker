@@ -52,7 +52,7 @@ view: d_supplier {
     description: "Cohort of suppliers according to Account Balance"
     type: tier
     style: integer
-    tiers: [1,3001,5001,7001]
+    tiers: [0,3001,5001,7001]
     sql: ${d_supplier.s_acctbal} ;;
   }
 
