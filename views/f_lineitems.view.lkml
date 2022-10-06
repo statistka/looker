@@ -204,6 +204,13 @@ view: f_lineitems {
     value_format_name: usd
   }
 
+  measure: TtlGrossMargin {
+    label: "Total Gross Margin Amount"
+    description: "Total Gross Revenue – Total Cost"
+    sql: ${TtlGrossRev} - ${TtlCost} ;;
+    value_format_name: usd
+  }
+
   measure: GrossMarginPct {
     label: "Gross Margin Percentage"
     description: "Total Gross Margin Amount / Total Gross Revenue"
