@@ -161,8 +161,8 @@ view: f_lineitems {
     drill_fields: []
     hidden: yes
   }
-  measure: TtlSalePrice {
-    label: "Total Sale Price"
+  measure: TtlSales {
+    label: "Total Sales" #this name looks more user-friendly as it's common definition for the amount of money got from the items sold
     description: "Total sales from items sold"
     type: sum
     sql: ${l_extendedprice} ;;
@@ -181,7 +181,7 @@ view: f_lineitems {
     label: "Cumulative Total Sales"
     description: "Cumulative total sales from items sold (also known as a running total)"
     type: running_total
-    sql: ${TtlSalePrice} ;;
+    sql: ${TtlSales} ;;
     value_format_name: usd
     }
 
@@ -240,7 +240,7 @@ view: f_lineitems {
     description: "Number of items that were returned by dissatisfied customers"
     type: sum
     sql: ${l_quantity} ;;
-    filters: [l_orderstatus: "R"]
+    filters: [l_returnflag: "R"]
   }
 
   measure: SoldItems {
@@ -258,4 +258,19 @@ view: f_lineitems {
     value_format_name: percent_2
   }
 
+  measure: TtlCustomers {
+    label: "Total Number of Customers"
+    description: "Number of unique customers who made a purchase at least once"
+    type: count_distinct
+    sql: ${l_custkey} ;;
+    value_format_name: id
+  }
+
+  measure: SalesByCus {
+    label: "Average Spend per Customer"
+    description: "Total Sale Price / Total Number of Customers"
+    type: number
+    sql: ${TtlSales} / NULLIF(${TtlCustomers},0) ;;
+    value_format_name: percent_2
+  }
 }
