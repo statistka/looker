@@ -5,16 +5,19 @@ view: d_part {
     ;;
 
   dimension: p_brand {
+    label: "Brand"
     type: string
     sql: ${TABLE}."P_BRAND" ;;
   }
 
   dimension: p_mfgr {
+    label: "Manufacturer"
     type: string
     sql: ${TABLE}."P_MFGR" ;;
   }
 
   dimension: p_name {
+    label: "Part name"
     type: string
     sql: ${TABLE}."P_NAME" ;;
   }
@@ -27,11 +30,13 @@ view: d_part {
   }
 
   dimension: p_size {
+    label: "Part size"
     type: number
     sql: ${TABLE}."P_SIZE" ;;
   }
 
   dimension: p_type {
+    label: "Part type"
     type: string
     sql: ${TABLE}."P_TYPE" ;;
   }
@@ -39,5 +44,6 @@ view: d_part {
   measure: count {
     type: count
     drill_fields: [p_name]
+    hidden: yes
   }
 }
