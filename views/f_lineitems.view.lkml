@@ -8,12 +8,14 @@ view: f_lineitems {
     label: "Available Qty"
     type: number
     sql: ${TABLE}."L_AVAILQTY" ;;
+    group_label: "Facts"
   }
 
   dimension: l_clerk {
     label: "Clerk"
     type: string
     sql: ${TABLE}."L_CLERK" ;;
+    group_label: "Order Details"
   }
 
   dimension: l_commitdatekey {
@@ -32,12 +34,14 @@ view: f_lineitems {
     label: "Discount"
     type: number
     sql: ${TABLE}."L_DISCOUNT" ;;
+    group_label: "Order Details"
   }
 
   dimension: l_extendedprice {
     label: "Sales"
     type: number
     sql: ${TABLE}."L_EXTENDEDPRICE" ;;
+    group_label: "Facts"
   }
 
   dimension: l_linenumber {
@@ -62,12 +66,14 @@ view: f_lineitems {
     label: "Order Priority"
     type: string
     sql: ${TABLE}."L_ORDERPRIORITY" ;;
+    group_label: "Order Details"
   }
 
   dimension: l_orderstatus {
     label: "Order Status"
     type: string
     sql: ${TABLE}."L_ORDERSTATUS" ;;
+    group_label: "Order Details"
   }
 
   dimension: l_partkey {
@@ -80,6 +86,7 @@ view: f_lineitems {
     label: "Quantity"
     type: number
     sql: ${TABLE}."L_QUANTITY" ;;
+    group_label: "Facts"
   }
 
   dimension: l_receiptdatekey {
@@ -92,6 +99,7 @@ view: f_lineitems {
     label: "Return flag"
     type: string
     sql: ${TABLE}."L_RETURNFLAG" ;;
+    group_label: "Order Details"
   }
 
   dimension: l_shipdatekey {
@@ -101,20 +109,24 @@ view: f_lineitems {
   }
 
   dimension: l_shipinstruct {
+    label: "Shipping Instructions"
     type: string
     sql: ${TABLE}."L_SHIPINSTRUCT" ;;
+    group_label: "Shipping Details"
   }
 
   dimension: l_shipmode {
     label: "Shipping Mode"
     type: string
     sql: ${TABLE}."L_SHIPMODE" ;;
+    group_label: "Shipping Details"
   }
 
   dimension: l_shippriority {
     label: "Shipping Priority"
     type: number
     sql: ${TABLE}."L_SHIPPRIORITY" ;;
+    group_label: "Shipping Details"
   }
 
   dimension: l_suppkey {
@@ -127,18 +139,21 @@ view: f_lineitems {
     label: "Supply Cost"
     type: number
     sql: ${TABLE}."L_SUPPLYCOST" ;;
+    group_label: "Facts"
   }
 
   dimension: l_tax {
     label: "Tax"
     type: number
     sql: ${TABLE}."L_TAX" ;;
+    group_label: "Facts"
   }
 
   dimension: l_totalprice {
     label: "Total Order Sum"
     type: number
     sql: ${TABLE}."L_TOTALPRICE" ;;
+    group_label: "Facts"
   }
 
   measure: count {
@@ -207,6 +222,7 @@ view: f_lineitems {
   measure: TtlGrossMargin {
     label: "Total Gross Margin Amount"
     description: "Total Gross Revenue – Total Cost"
+    type: number
     sql: ${TtlGrossRev} - ${TtlCost} ;;
     value_format_name: usd
   }
@@ -214,10 +230,9 @@ view: f_lineitems {
   measure: GrossMarginPct {
     label: "Gross Margin Percentage"
     description: "Total Gross Margin Amount / Total Gross Revenue"
-    type: sum
-    sql: ${l_extendedprice} ;;
-    filters: [l_shipmode: "AIR"]
-    value_format_name: usd
+    type: number
+    sql: ${TtlGrossMargin} / NULLIF(${TtlGrossRev},0) ;;
+    value_format_name: percent_2
   }
 
 

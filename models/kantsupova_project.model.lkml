@@ -14,6 +14,8 @@ explore: f_lineitems {
   label: "Operational Analysis"
   view_label: "Ordered Items"
 
+  case_sensitive: no
+
   join: d_part{
     view_label: "Parts"
     type: left_outer
