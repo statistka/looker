@@ -47,9 +47,18 @@ view: d_supplier {
     hidden: yes
   }
 
+  dimension: SuppCohort {
+    label: "Supplier Cohort" #the name given in the task is too long and not user-friendly, so I left it in the description
+    description: "Cohort of suppliers according to Account Balance"
+    type: tier
+    tiers: [0,3001,5001,7001]
+    sql: ${d_supplier.s_acctbal} ;;
+  }
+
   measure: count {
+    label: "Suppliers Count"
     type: count
     drill_fields: [s_name]
-    hidden: yes
+    hidden: no
   }
 }

@@ -30,7 +30,7 @@ view: d_customer {
   }
 
   dimension: c_nation {
-    label: "Nation"
+    label: "Customer Nation"
     type: string
     sql: ${TABLE}."C_NATION" ;;
   }
@@ -48,8 +48,9 @@ view: d_customer {
   }
 
   measure: count {
+    label: "Customers Count"
     type: count
     drill_fields: [c_name]
-    hidden: yes
+    hidden: no
   }
 }

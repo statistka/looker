@@ -141,14 +141,6 @@ view: f_lineitems {
     sql: ${TABLE}."L_TOTALPRICE" ;;
   }
 
-  dimension: SuppCohort {
-    label: "Cohort of suppliers according to Account Balance"
-    description: "Cohort of suppliers according to Account Balance"
-    type: tier
-    tiers: [0,1,3001,5001,7001]
-    sql: ${d_supplier.s_acctbal} ;;
-  }
-
   measure: count {
     type: count
     drill_fields: []
@@ -208,6 +200,7 @@ view: f_lineitems {
     description: "Total price of completed sales"
     type: sum
     sql: ${l_extendedprice} ;;
+    filters: [l_orderstatus: "F"]
     value_format_name: usd
   }
 
