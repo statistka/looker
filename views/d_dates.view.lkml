@@ -5,6 +5,7 @@ view: d_dates {
     ;;
 
   dimension_group: date_val {
+    label: "Calendar dates"
     type: time
     timeframes: [
       raw,
@@ -50,16 +51,33 @@ view: d_dates {
     label: "MonthNum"
     type: number
     sql: ${TABLE}."MONTH_NUM" ;;
+    order_by_field: date_val_month
   }
 
   dimension: quarter {
+    label: "Quarter"
     type: number
     sql: ${TABLE}."QUARTER" ;;
+    order_by_field: date_val_quarter
   }
 
   dimension: year {
+    label: "Year"
     type: number
     sql: ${TABLE}."YEAR" ;;
+    order_by_field: date_val_year
+  }
+
+  dimension: month_year {
+    type: string
+    sql: ${month_name} || '-' || ${year} ;;
+    order_by_field: monthyear
+  }
+
+  dimension: monthyear {
+    type: number
+    sql: ${year} * 100 + ${month_num} ;;
+    hidden: yes
   }
 
   measure: count {
