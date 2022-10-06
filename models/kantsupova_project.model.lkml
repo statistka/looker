@@ -3,15 +3,15 @@ connection: "tpchlooker"
 # include all the views
 include: "/views/**/*.view"
 
-datagroup: kantsupova_project_default_datagroup {
+datagroup: all_views {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
 
-persist_with: kantsupova_project_default_datagroup
+persist_with: all_views
 
 explore: f_lineitems {
-  label: "Items"
+  label: "Operational Analysis"
   view_label: "Ordered Items"
 
   join: d_part{

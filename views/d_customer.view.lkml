@@ -5,6 +5,7 @@ view: d_customer {
     ;;
 
   dimension: c_address {
+    label: "Customer Address"
     type: string
     sql: ${TABLE}."C_ADDRESS" ;;
   }
@@ -17,26 +18,31 @@ view: d_customer {
   }
 
   dimension: c_mktsegment {
+    label: "Market Segment"
     type: number
     sql: ${TABLE}."C_MKTSEGMENT" ;;
   }
 
   dimension: c_name {
+    label: "Customer Name"
     type: string
     sql: ${TABLE}."C_NAME" ;;
   }
 
   dimension: c_nation {
+    label: "Nation"
     type: string
     sql: ${TABLE}."C_NATION" ;;
   }
 
   dimension: c_phone {
+    label: "Customer Phone"
     type: string
     sql: ${TABLE}."C_PHONE" ;;
   }
 
   dimension: c_region {
+    label: "Customer Region"
     type: string
     sql: ${TABLE}."C_REGION" ;;
   }
@@ -44,5 +50,6 @@ view: d_customer {
   measure: count {
     type: count
     drill_fields: [c_name]
+    hidden: yes
   }
 }

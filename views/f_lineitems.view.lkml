@@ -19,7 +19,7 @@ view: f_lineitems {
   dimension: l_commitdatekey {
     type: number
     sql: ${TABLE}."L_COMMITDATEKEY" ;;
-    hidden: no
+    hidden: yes
   }
 
   dimension: l_custkey {
@@ -49,7 +49,7 @@ view: f_lineitems {
   dimension: l_orderdatekey {
     type: number
     sql: ${TABLE}."L_ORDERDATEKEY" ;;
-    hidden: no
+    hidden: yes
   }
 
   dimension: l_orderkey {
@@ -85,7 +85,7 @@ view: f_lineitems {
   dimension: l_receiptdatekey {
     type: number
     sql: ${TABLE}."L_RECEIPTDATEKEY" ;;
-    hidden: no
+    hidden: yes
   }
 
   dimension: l_returnflag {
@@ -97,7 +97,7 @@ view: f_lineitems {
   dimension: l_shipdatekey {
     type: number
     sql: ${TABLE}."L_SHIPDATEKEY" ;;
-    hidden: no
+    hidden: yes
   }
 
   dimension: l_shipinstruct {
@@ -141,6 +141,14 @@ view: f_lineitems {
     sql: ${TABLE}."L_TOTALPRICE" ;;
   }
 
+  dimension: SuppCohort {
+    label: "Cohort of suppliers according to Account Balance"
+    description: "Cohort of suppliers according to Account Balance"
+    type: tier
+    tiers: [0,1,3001,5001,7001]
+    sql: ${d_supplier.s_acctbal} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
@@ -169,4 +177,48 @@ view: f_lineitems {
     sql: ${TtlSalePrice} ;;
     value_format_name: usd
     }
+
+  measure: TtlSalesShpAir {
+    label: "Total Sale Price Shipped By Air"
+    description: "Total sales of items shipped by air"
+    type: sum
+    sql: ${l_extendedprice} ;;
+    filters: [l_shipmode: "AIR"]
+    value_format_name: usd
+  }
+
+  measure: TtlRUSales {
+    label: "Total Russia Sales"
+    description: "Total sales by customers from Russia"
+    type: sum
+    sql: ${l_extendedprice} ;;
+    filters: [d_customer.c_nation: "RUSSIA"]
+    value_format_name: usd
+  }
+
+  measure: TtlCost {
+    label: "Total Cost"
+    type: sum
+    sql: ${l_supplycost} ;;
+    value_format_name: usd
+  }
+
+  measure: TtlGrossRev {
+    label: "Total Gross Revenue"
+    description: "Total price of completed sales"
+    type: sum
+    sql: ${l_extendedprice} ;;
+    value_format_name: usd
+  }
+
+  measure: GrossMarginPct {
+    label: "Gross Margin Percentage"
+    description: "Total Gross Margin Amount / Total Gross Revenue"
+    type: sum
+    sql: ${l_extendedprice} ;;
+    filters: [l_shipmode: "AIR"]
+    value_format_name: usd
+  }
+
+
 }

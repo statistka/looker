@@ -5,31 +5,37 @@ view: d_supplier {
     ;;
 
   dimension: s_acctbal {
+    label: "Actual Balance"
     type: number
     sql: ${TABLE}."S_ACCTBAL" ;;
   }
 
   dimension: s_address {
+    label: "Supplier Address"
     type: string
     sql: ${TABLE}."S_ADDRESS" ;;
   }
 
   dimension: s_name {
+    label: "Supplier Name"
     type: string
     sql: ${TABLE}."S_NAME" ;;
   }
 
   dimension: s_nation {
+    label: "Supplier Nation"
     type: string
     sql: ${TABLE}."S_NATION" ;;
   }
 
   dimension: s_phone {
+    label: "Supplier Phone"
     type: string
     sql: ${TABLE}."S_PHONE" ;;
   }
 
   dimension: s_region {
+    label: "Supplier Region"
     type: string
     sql: ${TABLE}."S_REGION" ;;
   }
@@ -44,5 +50,6 @@ view: d_supplier {
   measure: count {
     type: count
     drill_fields: [s_name]
+    hidden: yes
   }
 }

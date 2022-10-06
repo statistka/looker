@@ -27,21 +27,27 @@ view: d_dates {
   }
 
   dimension: day_of_week {
+    label: "Weekday"
     type: number
     sql: ${TABLE}."DAY_OF_WEEK" ;;
   }
 
   dimension: dayname_of_week {
+    label: "Weekday name"
     type: string
     sql: ${TABLE}."DAYNAME_OF_WEEK" ;;
+    order_by_field: day_of_week
   }
 
   dimension: month_name {
+    label: "Month name"
     type: string
     sql: ${TABLE}."MONTH_NAME" ;;
+    order_by_field: month_num
   }
 
   dimension: month_num {
+    label: "MonthNum"
     type: number
     sql: ${TABLE}."MONTH_NUM" ;;
   }
@@ -59,5 +65,6 @@ view: d_dates {
   measure: count {
     type: count
     drill_fields: [month_name]
+    hidden: yes
   }
 }
