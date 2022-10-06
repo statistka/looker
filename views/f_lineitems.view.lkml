@@ -167,14 +167,16 @@ view: f_lineitems {
     type: sum
     sql: ${l_extendedprice} ;;
     value_format_name: usd
+    group_label: "Sales Measures"
   }
 
   measure: AvgSalePrice {
-    label: "Average Sale Price"
+    label: "Average Sales" #this name is aligned with manes of other measures from the group Sales measures
     description: "Average sale price of items sold"
     type: average
     sql: ${l_extendedprice};;
     value_format_name: usd
+    group_label: "Sales Measures"
   }
 
   measure: CmlTtlSale {
@@ -183,15 +185,17 @@ view: f_lineitems {
     type: running_total
     sql: ${TtlSales} ;;
     value_format_name: usd
+    group_label: "Sales Measures"
     }
 
   measure: TtlSalesShpAir {
-    label: "Total Sale Price Shipped By Air"
+    label: "Total Sales Shipped By Air"
     description: "Total sales of items shipped by air"
     type: sum
     sql: ${l_extendedprice} ;;
     filters: [l_shipmode: "AIR"]
     value_format_name: usd
+    group_label: "Sales Measures"
   }
 
   measure: TtlRUSales {
@@ -201,6 +205,7 @@ view: f_lineitems {
     sql: ${l_extendedprice} ;;
     filters: [d_customer.c_nation: "RUSSIA"]
     value_format_name: usd
+    group_label: "Sales Measures"
   }
 
   measure: TtlCost {
@@ -208,6 +213,7 @@ view: f_lineitems {
     type: sum
     sql: ${l_supplycost} ;;
     value_format_name: usd
+    group_label: "Margin & Revenue Measures"
   }
 
   measure: TtlGrossRev {
@@ -217,6 +223,7 @@ view: f_lineitems {
     sql: ${l_extendedprice} ;;
     filters: [l_orderstatus: "F"]
     value_format_name: usd
+    group_label: "Margin & Revenue Measures"
   }
 
   measure: TtlGrossMargin {
@@ -225,6 +232,7 @@ view: f_lineitems {
     type: number
     sql: ${TtlGrossRev} - ${TtlCost} ;;
     value_format_name: usd
+    group_label: "Margin & Revenue Measures"
   }
 
   measure: GrossMarginPct {
@@ -233,6 +241,7 @@ view: f_lineitems {
     type: number
     sql: ${TtlGrossMargin} / NULLIF(${TtlGrossRev},0) ;;
     value_format_name: percent_2
+    group_label: "Margin & Revenue Measures"
   }
 
   measure: ReturnedItems {
@@ -241,6 +250,7 @@ view: f_lineitems {
     type: sum
     sql: ${l_quantity} ;;
     filters: [l_returnflag: "R"]
+    group_label: "Item Measures"
   }
 
   measure: SoldItems {
@@ -248,6 +258,7 @@ view: f_lineitems {
     description: "Number of items that were sold"
     type: sum
     sql: ${l_quantity} ;;
+    group_label: "Item Measures"
   }
 
   measure: ItemRR {
@@ -256,6 +267,7 @@ view: f_lineitems {
     type: number
     sql: ${ReturnedItems} / NULLIF(${SoldItems},0) ;;
     value_format_name: percent_2
+    group_label: "Item Measures"
   }
 
   measure: TtlCustomers {
@@ -264,6 +276,7 @@ view: f_lineitems {
     type: count_distinct
     sql: ${l_custkey} ;;
     value_format_name: id
+    group_label: "Customer Measures"
   }
 
   measure: SalesByCus {
@@ -272,5 +285,6 @@ view: f_lineitems {
     type: number
     sql: ${TtlSales} / NULLIF(${TtlCustomers},0) ;;
     value_format_name: percent_2
+    group_label: "Customer Measures"
   }
 }
