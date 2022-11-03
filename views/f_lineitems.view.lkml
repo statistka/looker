@@ -263,12 +263,13 @@ view: f_lineitems {
   }
 
   measure: OrdersCount{
-    label: "Total Number of Orders"
+    label: "Count of Orders"
     description: "Number of orders that were sold"
     type: count_distinct
     sql: ${l_orderkey};;
+    value_format_name: id
     group_label: "Order Measures"
-  }
+    }
 
   measure: ItemRR {
     label: "Item Return Rate"
