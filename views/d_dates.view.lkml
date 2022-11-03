@@ -48,7 +48,7 @@ view: d_dates {
   }
 
   dimension: month_num {
-    label: "MonthNum"
+    label: "Month Num"
     type: number
     sql: ${TABLE}."MONTH_NUM" ;;
     order_by_field: date_val_month
@@ -69,6 +69,7 @@ view: d_dates {
   }
 
   dimension: month_year {
+    label: "Month-Year"
     type: string
     sql: ${month_name} || '-' || ${year} ;;
     order_by_field: monthyear

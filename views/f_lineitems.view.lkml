@@ -57,9 +57,10 @@ view: f_lineitems {
   }
 
   dimension: l_orderkey {
+    label: "Order Number"
     type: number
     sql: ${TABLE}."L_ORDERKEY" ;;
-    hidden: yes
+    group_label: "Order Details"
   }
 
   dimension: l_orderpriority {
@@ -259,6 +260,14 @@ view: f_lineitems {
     type: sum
     sql: ${l_quantity} ;;
     group_label: "Item Measures"
+  }
+
+  measure: OrdersCount{
+    label: "Total Number of Orders"
+    description: "Number of orders that were sold"
+    type: count_distinct
+    sql: ${l_orderkey};;
+    group_label: "Order Measures"
   }
 
   measure: ItemRR {

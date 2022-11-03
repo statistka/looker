@@ -35,9 +35,24 @@ explore: f_lineitems {
     relationship: many_to_one
   }
   join: d_dates {
-    view_label: "Dates"
+    view_label: "Order Dates"
     type: left_outer
-    sql_on: ${d_dates.datekey} = ${f_lineitems.l_orderdatekey} ;;
+    sql_on: ${f_lineitems.l_orderdatekey} = ${d_dates.datekey} ;;
     relationship: many_to_one
   }
+
+  #join: o_dates {
+  #  view_label: "Order Dates"
+  #  type: left_outer
+  #  from: d_dates
+  #  sql_on: ${f_lineitems.l_orderdatekey} = ${d_dates.datekey} ;;
+  #}
+
+  join: s_dates {
+    view_label: "Shipment dates"
+    type: left_outer
+    from: d_dates
+    sql_on: ${f_lineitems.l_shipdatekey} = ${s_dates.datekey};;
+    relationship: many_to_one
+    }
 }
