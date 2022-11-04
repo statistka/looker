@@ -11,6 +11,7 @@ view: d_dates {
       raw,
       date,
       day_of_year,
+      day_of_month,
       week,
       month,
       quarter,
@@ -26,12 +27,6 @@ view: d_dates {
     sql: ${TABLE}."DATEKEY" ;;
     primary_key: yes
     hidden: yes
-  }
-
-  dimension: day_of_year {
-    label: "Day of year"
-    type: number
-    sql: ${TABLE}."day_of_year";;
   }
 
   dimension: day_of_week {
