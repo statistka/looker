@@ -51,9 +51,10 @@ view: d_supplier {
     label: "Supplier Cohort" #the name given in the task is too long and not user-friendly, so I left it in the description
     description: "Cohort of suppliers according to Account Balance"
     type: tier
+    tiers: [0,301,3001,5001,7001]
     style: integer
-    tiers: [0,3001,5001,7001]
-    sql: ${d_supplier.s_acctbal} ;;
+    sql: ${s_acctbal} ;;
+    value_format: "$#,##0"
   }
 
   measure: count {
