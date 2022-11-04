@@ -27,6 +27,12 @@ view: d_dates {
     hidden: yes
   }
 
+  dimension: day_of_year {
+    label: "Day"
+    type: number
+    sql: extract_day(${date_val_date}) ;;
+  }
+
   dimension: day_of_week {
     label: "Weekday"
     type: number
