@@ -162,6 +162,7 @@ view: f_lineitems {
     drill_fields: []
     hidden: yes
   }
+
   measure: TtlSales {
     label: "Total Sales" #this name looks more user-friendly as it's common definition for the amount of money got from the items sold
     description: "Total sales from items sold"
@@ -270,6 +271,7 @@ view: f_lineitems {
     value_format_name: id
     group_label: "Order Measures"
     }
+
 
   measure: ItemRR {
     label: "Item Return Rate"
