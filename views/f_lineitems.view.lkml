@@ -42,7 +42,7 @@ view: f_lineitems {
     type: number
     sql: ${TABLE}."L_EXTENDEDPRICE" ;;
     group_label: "Facts"
-    hidden:  yes
+    hidden:  no
   }
 
   dimension: l_linenumber {
