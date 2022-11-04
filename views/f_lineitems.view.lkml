@@ -168,7 +168,7 @@ view: f_lineitems {
     label: "Total Sales" #this name looks more user-friendly as it's common definition for the amount of money got from the items sold
     description: "Total sales from items sold"
     type: sum
-    sql: ${l_totalprice} ;;
+    sql: ${l_extendedprice} ;;
     value_format_name: usd
     group_label: "Sales Measures"
   }
@@ -177,7 +177,7 @@ view: f_lineitems {
     label: "Average Sales" #this name is aligned with manes of other measures from the group Sales measures
     description: "Average sale price of items sold"
     type: average
-    sql: ${l_totalprice};;
+    sql: ${l_extendedprice};;
     value_format_name: usd
     group_label: "Sales Measures"
   }
@@ -195,7 +195,7 @@ view: f_lineitems {
     label: "Total Sales Shipped By Air"
     description: "Total sales of items shipped by air"
     type: sum
-    sql: ${l_totalprice} ;;
+    sql: ${l_extendedprice} ;;
     filters: [l_shipmode: "AIR"]
     value_format_name: usd
     group_label: "Sales Measures"
@@ -205,7 +205,7 @@ view: f_lineitems {
     label: "Total Russia Sales"
     description: "Total sales by customers from Russia"
     type: sum
-    sql: ${l_totalprice} ;;
+    sql: ${l_extendedprice} ;;
     filters: [d_customer.c_nation: "RUSSIA"]
     value_format_name: usd
     group_label: "Sales Measures"
@@ -223,7 +223,7 @@ view: f_lineitems {
     label: "Total Gross Revenue"
     description: "Total price of completed sales"
     type: sum
-    sql: ${l_totalprice} ;;
+    sql: ${l_extendedprice} ;;
     filters: [l_orderstatus: "F"]
     value_format_name: usd
     group_label: "Margin & Revenue Measures"
