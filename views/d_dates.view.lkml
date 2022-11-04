@@ -51,14 +51,12 @@ view: d_dates {
     label: "Month Num"
     type: number
     sql: ${TABLE}."MONTH_NUM" ;;
-    order_by_field: date_val_month
   }
 
   dimension: quarter {
     label: "Quarter"
     type: number
     sql: ${TABLE}."QUARTER" ;;
-    order_by_field: date_val_quarter
   }
 
   dimension: year {
