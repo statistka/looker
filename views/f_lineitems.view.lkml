@@ -122,6 +122,7 @@ view: f_lineitems {
     type: string
     sql: ${TABLE}."L_SHIPMODE" ;;
     group_label: "Shipping Details"
+    drill_fields: [Ship_details*]
   }
 
   dimension: l_shippriority {
@@ -196,7 +197,7 @@ view: f_lineitems {
     description: "Total sales of items shipped by air"
     type: sum
     sql: ${l_extendedprice} ;;
-    filters: [l_shipmode: "AIR"]
+    filters: [l_shipmode: "AIR, REG AIR"]
     value_format_name: usd
     group_label: "Sales Measures"
   }
@@ -299,4 +300,9 @@ view: f_lineitems {
     value_format_name: percent_2
     group_label: "Customer Measures"
   }
+
+  set: Ship_details {
+    fields: [d_supplier.SuppCohort, d_supplier.s_region]
+  }
+
 }
