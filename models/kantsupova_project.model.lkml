@@ -51,7 +51,6 @@ explore: f_lineitems {
   join: s_dates {
     view_label: "Shipment dates"
     type: left_outer
-    from: d_dates
     sql_on: ${f_lineitems.l_shipdatekey} = ${s_dates.datekey};;
     relationship: many_to_one
     }
