@@ -31,7 +31,7 @@ explore: f_lineitems {
   join: d_supplier{
     view_label: "Suppliers"
     type: left_outer
-    sql_on: ${d_supplier.s_suppkey} = ${f_lineitems.l_custkey} ;;
+    sql_on: ${d_supplier.s_suppkey} = ${f_lineitems.l_suppkey} ;;
     relationship: many_to_one
   }
   join: d_dates {
