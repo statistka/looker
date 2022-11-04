@@ -10,6 +10,7 @@ view: d_dates {
     timeframes: [
       raw,
       date,
+      day_of_year,
       week,
       month,
       quarter,
@@ -28,9 +29,9 @@ view: d_dates {
   }
 
   dimension: day_of_year {
-    label: "Day"
+    label: "Day of year"
     type: number
-    sql: extract_day(${date_val_date}) ;;
+    sql: ${TABLE}."day_of_year";;
   }
 
   dimension: day_of_week {
