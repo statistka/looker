@@ -272,7 +272,6 @@ view: f_lineitems {
     group_label: "Order Measures"
     }
 
-
   measure: ItemRR {
     label: "Item Return Rate"
     description: "Number Of Items Returned / Total Number Of Items Sold"
