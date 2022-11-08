@@ -283,6 +283,15 @@ view: f_lineitems {
     group_label: "Item Measures"
   }
 
+  measure: CompleteRate {
+    label: "Order Completion Rate"
+    description: "Completed Sales / Total Sales"
+    type: number
+    sql: ${TtlGrossRev} / NULLIF(${TtlSales},0) ;;
+    value_format_name: percent_2
+    group_label: "Sales Measures"
+  }
+
   measure: TtlCustomers {
     label: "Total Number of Customers"
     description: "Number of unique customers who made a purchase at least once"
