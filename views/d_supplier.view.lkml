@@ -25,6 +25,7 @@ view: d_supplier {
       url: "http://www.google.com/search?q={{ value }}"
       icon_url: "http://google.com/favicon.ico"
     }
+    drill_fields: [Part_details*]
   }
 
   dimension: s_nation {
@@ -67,5 +68,9 @@ view: d_supplier {
     type: count
     drill_fields: [s_name]
     hidden: no
+  }
+
+  set: Part_details {
+    fields: [d_part.p_name, d_part.p_brand, d_part.p_mfgr]
   }
 }
