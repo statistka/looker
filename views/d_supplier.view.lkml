@@ -20,6 +20,10 @@ view: d_supplier {
     label: "Supplier Name"
     type: string
     sql: ${TABLE}."S_NAME" ;;
+    link: {
+      label: "Supplier's website"
+      url: "www.google.com/search?q={{ value }}"
+    }
   }
 
   dimension: s_nation {
