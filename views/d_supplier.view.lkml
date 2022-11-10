@@ -25,7 +25,6 @@ view: d_supplier {
       url: "http://www.google.com/search?q={{ value }}"
       icon_url: "http://google.com/favicon.ico"
     }
-    drill_fields: [Part_details*]
   }
 
   dimension: s_nation {
