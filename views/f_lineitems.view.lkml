@@ -228,6 +228,7 @@ view: f_lineitems {
     filters: [l_orderstatus: "F"]
     value_format_name: usd
     group_label: "Margin & Revenue Measures"
+    drill_fields: [Part_details*]
   }
 
   measure: TtlGrossMargin {
@@ -312,6 +313,10 @@ view: f_lineitems {
 
   set: Ship_details {
     fields: [d_supplier.SuppCohort, d_supplier.s_region]
+  }
+
+  set: Part_details {
+    fields: [d_part.p_name, d_part.p_brand, d_part.p_mfgr]
   }
 
 }
