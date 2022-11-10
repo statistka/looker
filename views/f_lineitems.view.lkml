@@ -174,6 +174,15 @@ view: f_lineitems {
     group_label: "Sales Measures"
   }
 
+  measure: PrevMonthSales {
+    label: "Previous Month Sales" #this name looks more user-friendly as it's common definition for the amount of money got from the items sold
+    description: "Total sales from items sold for the previous month"
+    type: sum
+    sql: ${l_extendedprice} where ${d_dates.date_val_date} = add_months(${d_dates.date_val_date}, -1);;
+    value_format_name: usd
+    group_label: "Sales Measures"
+  }
+
   measure: AvgSalePrice {
     label: "Average Sales" #this name is aligned with manes of other measures from the group Sales measures
     description: "Average sale price of items sold"
