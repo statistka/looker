@@ -41,6 +41,13 @@ explore: f_lineitems {
     relationship: many_to_one
   }
 
+  join: prev_month_sales {
+    view_label: "Current and Prev Month Sales"
+    type: left_outer
+    sql_on: ${d_dates.month_year} = ${prev_month_sales.month_year};;
+    relationship: one_to_one
+  }
+
   #join: o_dates {
   #  view_label: "Order Dates"
   #  type: left_outer
