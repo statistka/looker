@@ -23,6 +23,12 @@ view: prev_month_sales {
     sql: ${TABLE}."MONTH(DATE_VAL)" ;;
   }
 
+  dimension: month_year {
+    primary_key: yes
+    type:  number
+    sql: ${yeardate_val} * 100 + ${monthdate_val};;
+  }
+
   dimension: cm_sales {
     type: number
     sql: ${TABLE}."CM_SALES" ;;
