@@ -2,7 +2,8 @@
   title: Operational Analysis
   layout: newspaper
   preferred_viewer: dashboards-next
-  description: 'This dashboard shows the most critical KPIs for the operational analysis'
+  crossfilter_enabled: true
+  description: This dashboard shows the main KPIs for the operational analysis
   preferred_slug: JagUFnJhM734FiAGB8qXsK
   elements:
   - title: Year-on-Year Gross Margin Trend
@@ -153,7 +154,9 @@
     interpolation: monotone
     defaults_version: 1
     hidden_fields: []
-    listen: {}
+    listen:
+      Year: d_dates.year
+      Month name: d_dates.month_name
     row: 9
     col: 0
     width: 12
@@ -228,7 +231,9 @@
     interpolation: monotone
     defaults_version: 1
     hidden_fields: []
-    listen: {}
+    listen:
+      Year: d_dates.year
+      Month name: d_dates.month_name
     row: 0
     col: 12
     width: 11
@@ -253,7 +258,10 @@
     value_format: "$#.##,,\\M\\"
     series_types: {}
     defaults_version: 1
-    listen: {}
+    listen:
+      Year: d_dates.year
+      Month name: d_dates.month_name
+      Day of Month: d_dates.date_val_day_of_month
     row: 0
     col: 0
     width: 6
@@ -278,7 +286,55 @@
     value_format: ''
     series_types: {}
     defaults_version: 1
+    listen:
+      Year: d_dates.year
+      Month name: d_dates.month_name
+      Day of Month: d_dates.date_val_day_of_month
     row: 0
     col: 6
     width: 6
     height: 3
+  filters:
+  - name: Day of Month
+    title: Day of Month
+    type: field_filter
+    default_value: "[1,20]"
+    allow_multiple_values: true
+    required: true
+    ui_config:
+      type: advanced
+      display: popover
+      options:
+        min: 1
+        max: 31
+    model: kantsupova_project
+    explore: f_lineitems
+    listens_to_filters: []
+    field: d_dates.date_val_day_of_month
+  - name: Month name
+    title: Month name
+    type: field_filter
+    default_value: Jan
+    allow_multiple_values: true
+    required: true
+    ui_config:
+      type: advanced
+      display: popover
+    model: kantsupova_project
+    explore: f_lineitems
+    listens_to_filters: []
+    field: d_dates.month_name
+  - name: Year
+    title: Year
+    type: field_filter
+    default_value: '1995'
+    allow_multiple_values: true
+    required: false
+    ui_config:
+      type: advanced
+      display: popover
+      options: []
+    model: kantsupova_project
+    explore: f_lineitems
+    listens_to_filters: []
+    field: d_dates.year
