@@ -1,4 +1,6 @@
 view: prev_month_sales {
+  label: "Previous Month Sales"
+  view_label: ""
   derived_table: {
     sql: select YEAR(DATE_VAL), MONTH(DATE_VAL), sum(L_EXTENDEDPRICE ) as CM_Sales, LAG( sum(L_EXTENDEDPRICE), 1) OVER (Order by YEAR(DATE_VAL), MONTH(DATE_VAL)) as PM_Sales
     from DATA_MART.D_DATES as d LEFT JOIN DATA_MART.F_LINEITEMS as f on d.datekey = L_ORDERDATEKEY group by YEAR(DATE_VAL), MONTH(DATE_VAL)
