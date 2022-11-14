@@ -233,8 +233,8 @@
     col: 12
     width: 11
     height: 15
-  - title: Gross Margin % KPI card
-    name: Gross Margin % KPI card
+  - title: Gross Revenue KPI card
+    name: Gross Revenue KPI card
     model: kantsupova_project
     explore: f_lineitems
     type: single_value
@@ -258,8 +258,8 @@
     col: 0
     width: 6
     height: 3
-  - title: Gross Margin % KPI card (Copy)
-    name: Gross Margin % KPI card (Copy)
+  - title: Gross Margin % KPI card
+    name: Gross Margin % KPI card
     model: kantsupova_project
     explore: f_lineitems
     type: single_value
