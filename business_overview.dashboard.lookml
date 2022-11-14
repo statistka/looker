@@ -2,7 +2,7 @@
   title: Operational Analysis
   layout: newspaper
   preferred_viewer: dashboards-next
-  description: ''
+  description: 'This dashboard shows the most critical KPIs for the operational analysis'
   preferred_slug: JagUFnJhM734FiAGB8qXsK
   elements:
   - title: Year-on-Year Gross Margin Trend

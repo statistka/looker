@@ -2,6 +2,7 @@ connection: "tpchlooker"
 
 # include all the views
 include: "/views/**/*.view"
+include: "/business_overview.dashboard.lookml"
 
 datagroup: all_views {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
