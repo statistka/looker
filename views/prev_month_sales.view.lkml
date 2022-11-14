@@ -2,8 +2,8 @@ view: prev_month_sales {
   label: "Previous Month Sales"
   view_label: ""
   derived_table: {
-    sql: select YEAR(DATE_VAL), MONTH(DATE_VAL), L_ORDERSTATUS, sum(L_EXTENDEDPRICE ) as CM_Sales, LAG(sum(L_EXTENDEDPRICE), 1) OVER (Order by YEAR(DATE_VAL), MONTH(DATE_VAL), L_ORDERSTATUS) as PM_Sales
-    from DATA_MART.D_DATES as d LEFT JOIN DATA_MART.F_LINEITEMS as f on d.datekey = L_ORDERDATEKEY group by YEAR(DATE_VAL), MONTH(DATE_VAL), L_ORDERSTATUS
+    sql: select YEAR(DATE_VAL), MONTH(DATE_VAL), sum(L_EXTENDEDPRICE ) as CM_Sales, LAG(sum(L_EXTENDEDPRICE), 1) OVER (Order by YEAR(DATE_VAL), MONTH(DATE_VAL)) as PM_Sales
+    from DATA_MART.D_DATES as d LEFT JOIN DATA_MART.F_LINEITEMS as f on d.datekey = L_ORDERDATEKEY group by YEAR(DATE_VAL), MONTH(DATE_VAL)
       ;;
   }
 
@@ -32,12 +32,6 @@ view: prev_month_sales {
     hidden:  yes
   }
 
-  dimension: order_status {
-    type: string
-    sql: ${TABLE}."L_ORDERSTATUS" ;;
-    hidden: yes
-  }
-
   dimension: cm_sales {
     type: number
     sql: ${TABLE}."CM_SALES" ;;
@@ -49,22 +43,6 @@ view: prev_month_sales {
     type: number
     sql: ${TABLE}."PM_SALES" ;;
     hidden:  yes
-  }
-
-  measure: CURMTH_REV {
-    label: "Current Month Revenue"
-    type: sum
-    sql: ${cm_sales} ;;
-    filters: [order_status: "F"]
-    value_format_name: usd
-  }
-
-  measure: PREVMTH_REV {
-    label: "Previous Month Revenue"
-    type: sum
-    sql: ${pm_sales} ;;
-    filters: [order_status: "F"]
-    value_format_name: usd
   }
 
   measure: CURMTH_SLS {
