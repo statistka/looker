@@ -184,7 +184,7 @@ view: f_lineitems {
   }
 
   measure: AvgSalePrice {
-    label: "Average Sales" #this name is aligned with manes of other measures from the group Sales measures
+    label: "Average Sales" #this name is aligned with names of other measures from the group Sales measures
     description: "Average sale price of items sold"
     type: average
     sql: ${l_extendedprice};;
